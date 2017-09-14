@@ -40,6 +40,19 @@ public class LonelyTwitterActivity extends Activity {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
 				saveInFile(text, new Date(System.currentTimeMillis()));
+				
+
+
+
+
+
+				Tweets tweet = new Tweets("");
+				try {
+					tweet.setMessage("Hello");
+				} catch (TweetToolLangException e) {
+
+				}
+
 				finish();
 
 			}
