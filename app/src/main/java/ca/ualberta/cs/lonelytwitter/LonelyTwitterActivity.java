@@ -55,7 +55,7 @@ public class LonelyTwitterActivity extends Activity {
 
 				Tweetable tweet3 = new ImportantTweet(" ");
 
-				ArrayList<Tweets > tweetList = new ArrayList<Tweets>();
+				ArrayList<Tweets> tweetList = new ArrayList<Tweets>();
 				tweetList.add(tweet);
 				tweetList.add(tweet1);
 
