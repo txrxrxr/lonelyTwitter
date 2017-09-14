@@ -6,5 +6,4 @@ package ca.ualberta.cs.lonelytwitter;
 
 public class TweetToolLangException extends Exception{
 
-
 }
