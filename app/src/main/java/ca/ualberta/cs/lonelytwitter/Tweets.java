@@ -27,6 +27,10 @@ public abstract class Tweets implements Tweetable{          // abstract class
         return message;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
     public void setMessage(String message) throws TweetToolLangException{
         if (message.length() < 140)
             this.message = message;
@@ -35,9 +39,10 @@ public abstract class Tweets implements Tweetable{          // abstract class
         }
     }
 
-    public Date getDate() {
-        return date;
+    public void setDate(Date date) {
+        this.date = date;
     }
+
 
     public abstract Boolean isImportant();      // abstract method !!!!1
 
