@@ -12,6 +12,7 @@ import java.util.Date;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -40,20 +41,27 @@ public class LonelyTwitterActivity extends Activity {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
 				saveInFile(text, new Date(System.currentTimeMillis()));
-				
 
 
+				Tweets tweet = new ImportantTweet("");
+				Tweets tweet1 = new NormalTweet("Hi");
 
-
-
-				Tweets tweet = new Tweets("");
+				//Tweets tweet = new Tweets("");
 				try {
 					tweet.setMessage("Hello");
 				} catch (TweetToolLangException e) {
 
 				}
 
-				finish();
+				Tweetable tweet3 = new ImportantTweet("");
+				ArrayList<Tweets > tweetList = new ArrayList<Tweets>();
+				tweetList.add(tweet);
+				tweetList.add(tweet1);
+
+				//Log.d("", "The isImportant method return " + tweet.isImportant());
+				//Log.d("", "The isImportant method return " + tweet1.isImportant());
+
+				//finish();
 
 			}
 		});

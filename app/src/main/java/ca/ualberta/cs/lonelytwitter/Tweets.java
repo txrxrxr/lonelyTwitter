@@ -6,7 +6,8 @@ import java.util.Date;
  * Created by tiejun on 2017-09-13.
  */
 
-public class Tweets {
+public abstract class Tweets implements Tweetable{          // abstract class
+
     private String message;
     private Date date;
 
@@ -32,8 +33,13 @@ public class Tweets {
         else {
             throw new TweetToolLangException();
         }
-
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public abstract Boolean isImportant();      // abstract method !!!!1
 
 
 
