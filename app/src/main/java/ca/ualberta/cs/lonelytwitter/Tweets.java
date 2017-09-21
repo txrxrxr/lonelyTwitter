@@ -56,6 +56,8 @@ public abstract class Tweets implements Tweetable{          // abstract class
         return moodList;
     }
 
-
-
+    @Override
+    public String toString() {
+        return date.toString() + " | " + message;
+    }
 }
