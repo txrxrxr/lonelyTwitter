@@ -44,14 +44,16 @@ public class LonelyTwitterActivity extends Activity {
 		Button clearButton = (Button) findViewById(R.id.clear);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
-//		clearButton.setOnClickListener(new View.OnClickListener() {
-//
-//			public void onClick(View v) {
-//
-//
-//
-//			}
-//		});
+		clearButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+
+				tweets.clear();
+				adapter.notifyDataSetChanged();
+				saveInFile();
+
+			}
+		});
 
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
@@ -123,6 +125,7 @@ public class LonelyTwitterActivity extends Activity {
 	private void saveInFile() {
 
 		try {
+
 			FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
 			OutputStreamWriter writer = new OutputStreamWriter(fos);
 			Gson gson = new Gson();
