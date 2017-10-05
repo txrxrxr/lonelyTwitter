@@ -15,13 +15,10 @@ import io.searchbox.core.Index;
 import io.searchbox.core.Search;
 import io.searchbox.core.SearchResult;
 
-/**
- * Created by romansky on 10/20/16.
- */
 public class ElasticsearchTweetController {
     private static JestDroidClient client;
 
-    // TODO we need a function which adds tweets to elastic search
+    // TODO we need a function which adds tweets to elastic search, static method
     public static class AddTweetsTask extends AsyncTask<NormalTweet, Void, Void> {
 
         @Override
@@ -50,7 +47,7 @@ public class ElasticsearchTweetController {
         }
     }
 
-    // TODO we need a function which gets tweets from elastic search
+    // TODO we need a function which gets tweets from elastic search, static method
     public static class GetTweetsTask extends AsyncTask<String, Void, ArrayList<NormalTweet>> {
         @Override
         protected ArrayList<NormalTweet> doInBackground(String... search_parameters) {
