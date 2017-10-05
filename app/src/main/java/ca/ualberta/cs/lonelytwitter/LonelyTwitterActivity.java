@@ -65,7 +65,7 @@ public class LonelyTwitterActivity extends Activity {
 		searchButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				setResult(RESULT_OK);
+				//setResult(RESULT_OK);
 				search_content = bodyText.getText().toString();
 				query = "{\n" +
 						"       \"query\" : {\n" +
@@ -78,11 +78,13 @@ public class LonelyTwitterActivity extends Activity {
 
 				try {
 					tweetList = getTweetsTask.get();
+					adapter = new ArrayAdapter<NormalTweet>(LonelyTwitterActivity.this, R.layout.list_item, tweetList);
+					oldTweetsList.setAdapter(adapter);
+					adapter.notifyDataSetChanged();
 					Log.d("tweet-search",tweetList.toString());
 				} catch (Exception e) {
 					Log.i("search","search error!");
 				}
-
 //			public void onClick(View v) {
 //				setResult(RESULT_OK);
 //				tweetList.clear();
@@ -92,10 +94,6 @@ public class LonelyTwitterActivity extends Activity {
 			}
 		});
 
-		adapter = new ArrayAdapter<NormalTweet>(this,
-				R.layout.list_item, tweetList);
-		oldTweetsList.setAdapter(adapter);
-		adapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -110,11 +108,12 @@ public class LonelyTwitterActivity extends Activity {
 		try {
 			tweetList = getTweetsTask.get();
 		} catch (Exception e) {
-			Log.i("Error", "Failed to get the tweey from the async object");
+			Log.i("Error", "Failed to get the tweet from the async object");
 		}
-		adapter = new ArrayAdapter<NormalTweet>(this,
-				R.layout.list_item, tweetList);
+
+		adapter = new ArrayAdapter<NormalTweet>(this, R.layout.list_item, tweetList);
 		oldTweetsList.setAdapter(adapter);
+		adapter.notifyDataSetChanged();
 	}
 
 
@@ -136,20 +135,20 @@ public class LonelyTwitterActivity extends Activity {
 	}
 
 
-	private void saveInFile() {
-		try {
-
-			FileOutputStream fos = openFileOutput(FILENAME,0);
-			OutputStreamWriter writer = new OutputStreamWriter(fos);
-			Gson gson = new Gson();
-			gson.toJson(tweetList, writer);
-			writer.flush();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			throw new RuntimeException();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			throw new RuntimeException();
-		}
-	}
+//	private void saveInFile() {
+//		try {
+//
+//			FileOutputStream fos = openFileOutput(FILENAME,0);
+//			OutputStreamWriter writer = new OutputStreamWriter(fos);
+//			Gson gson = new Gson();
+//			gson.toJson(tweetList, writer);
+//			writer.flush();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			throw new RuntimeException();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			throw new RuntimeException();
+//		}
+//	}
 }
