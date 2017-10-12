@@ -3,7 +3,7 @@ package ca.ualberta.cs.lonelytwitter;
 import io.searchbox.annotations.JestId;
 import java.util.Date;
 
-public abstract class Tweet implements Tweetable {
+public abstract class Tweet implements Tweetable, Comparable<Tweet> {
     private String message;
     private Date date;
     @JestId
@@ -53,5 +53,9 @@ public abstract class Tweet implements Tweetable {
 
     public Date getDate() {
         return date;
+    }
+
+    public int compareTo(Tweet t) {
+        return t.getDate().compareTo(date);
     }
 }
